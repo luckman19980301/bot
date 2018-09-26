@@ -1,25 +1,58 @@
 <template>
   <div class="content">
-    <button class="add-to-cart" @click="addToCart">Add to Cart</button>
-    <div class="top-row">
-      <!-- <div :class="[saleBorderClass, 'top', 'part']">
-        <div class="robot-name">
-          {{ selectedRobot.head.title }}
-          <span v-if="selectedRobot.head.onSale" class="sale">Sale!</span>
+    <div class="preview">
+      <collapsible-panel>
+        <div class="preview-content">
+          <div class="top-row">
+            <img :src="selectedRobot.head.src" />
+          </div>
+          <div class="middle-row">
+            <img :src="selectedRobot.leftArm.src" class="rotate-left" />
+            <img :src="selectedRobot.torso.src" />
+            <img :src="selectedRobot.rightArm.src" class="rotate-right" />
+          </div>
+          <div class="bottom-row">
+            <img :src="selectedRobot.base.src"/>
+          </div>
         </div>
-        <img :src="selectedRobot.head.src" title="head"/>
-        <button @click="selectPrevHead" class="prev-selector">&#9668;</button>
-        <button @click="selectNextHead" class="next-selector">&#9658;</button>
-      </div> -->
-      <parts-selector :parts="availableParts.heads" position="top" />
+      </collapsible-panel>
+      <button class="add-to-cart" @click="addToCart">Add to Cart</button>
+    </div>
+    <div class="top-row">
+      <div class="robot-name">
+        {{ selectedRobot.head.title }}
+        <span v-if="selectedRobot.head.onSale" class="sale">Sale!</span>
+      </div>
+      <parts-selector
+        :class="[saleBorderClass, 'top', 'part']"
+        :parts="availableParts.heads"
+        position="top"
+        @partSelected="part => selectedRobot.head = part"
+      />
     </div>
     <div class="middle-row">
-      <parts-selector :parts="availableParts.arms" position="left" />
-      <parts-selector :parts="availableParts.torsos" position="center" />
-      <parts-selector :parts="availableParts.arms" position="right" />
+      <parts-selector
+        :parts="availableParts.arms"
+        position="left"
+        @partSelected="part => selectedRobot.leftArm = part"
+      />
+      <parts-selector
+        :parts="availableParts.torsos"
+        position="center"
+        @partSelected="part => selectedRobot.torso = part"
+      />
+      <parts-selector
+        :parts="availableParts.arms"
+        position="right"
+        @partSelected="part => selectedRobot.rightArm = part"
+      />
     </div>
     <div class="bottom-row">
-      <parts-selector :parts="availableParts.bases" position="bottom" />
+      <parts-selector
+        :parts="availableParts.bases"
+        position="bottom"
+        @partSelected="part => selectedRobot.base = part"
+      />
     </div>
     <div v-if="cart.length > 0">
       <h1>Cart</h1>
@@ -44,11 +77,14 @@
 <script>
 import createdHookMixin from './created-hook-mixin';
 import availableParts from '../data/parts';
+
+import CollapsiblePanel from '../shared/CollapsiblePanel.vue';
 import PartsSelector from './PartsSelector.vue';
 
 export default {
   name: 'RobotBuilder',
   components: {
+    'collapsible-panel': CollapsiblePanel,
     'parts-selector': PartsSelector,
   },
   data() {
@@ -85,6 +121,7 @@ export default {
 };
 </script>
 
+<!-- to sort -->
 <style lang="scss" scoped>
 .part {
   position: relative;
@@ -192,10 +229,13 @@ export default {
 }
 .add-to-cart {
   position: absolute;
-  width: 220px;
-  right: 30px;
+  left: 5px;
+  width: 210px;
   padding: 3px;
   font-size: 16px;
+}
+table {
+  margin: 0 auto;
 }
 td, th {
   text-align: left;
@@ -204,5 +244,26 @@ td, th {
 }
 .cost {
   text-align: right;
+}
+.preview {
+  position: absolute;
+  top: -20px;
+  right: 0;
+  width: 210px;
+  height: 210px;
+  padding: 5px;
+}
+.preview-content {
+  border: 1px solid #999;
+}
+.preview img {
+  width: 50px;
+  height: 50px;
+}
+.rotate-right {
+  transform: rotate(90deg);
+}
+.rotate-left {
+  transform: rotate(-90deg);
 }
 </style>

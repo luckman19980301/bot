@@ -31,14 +31,25 @@ export default {
     },
   },
   data() {
-    return { selectedPartIndex: 0 };
+    return {
+      selectedPartIndex: 0,
+    };
   },
   computed: {
     selectedPart() {
       return this.parts[this.selectedPartIndex];
     },
   },
+  created() {
+    this.emitSelectedPart();
+  },
+  updated() {
+    this.emitSelectedPart();
+  },
   methods: {
+    emitSelectedPart() {
+      this.$emit('partSelected', this.selectedPart);
+    },
     selectNextPart() {
       this.selectedPartIndex = getNextValidIndex(
         this.selectedPartIndex,
@@ -51,7 +62,6 @@ export default {
         this.parts.length,
       );
     },
-
   },
 };
 </script>
