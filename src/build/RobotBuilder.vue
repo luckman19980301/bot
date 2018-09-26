@@ -1,10 +1,15 @@
 <template>
-  <div>
+  <div class="content">
+    <button class="add-to-cart" @click="addToCart">Add to Cart</button>
     <div class="top-row">
-      <div class="top part">
-          <img :src="selectedRobot.head.src" title="head"/>
-          <button @click="selectPrevHead" class="prev-selector">&#9668;</button>
-          <button @click="selectNextHead" class="next-selector">&#9658;</button>
+      <div :class="[saleBorderClass, 'top', 'part']">
+        <div class="robot-name">
+          {{ selectedRobot.head.title }}
+          <span v-if="selectedRobot.head.onSale" class="sale">Sale!</span>
+        </div>
+        <img :src="selectedRobot.head.src" title="head"/>
+        <button @click="selectPrevHead" class="prev-selector">&#9668;</button>
+        <button @click="selectNextHead" class="next-selector">&#9658;</button>
       </div>
     </div>
     <div class="middle-row">
@@ -31,17 +36,36 @@
         <button @click="selectNextBase" class="next-selector">&#9660;</button>
       </div>
     </div>
+    <div v-if="cart.length > 0">
+      <h1>Cart</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Robot</th>
+            <th class="cost">Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(robot, index) in cart" :key="index">
+            <td>{{ robot.head.title }}</td>
+            <td class="cost">{{ robot.cost }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
 <script>
 import availableParts from '../data/parts';
+import createdHookMixin from './created-hook-mixin';
 
 export default {
   name: 'RobotBuilder',
   data() {
     return {
       availableParts,
+      cart: [],
       selectedHeadIndex: 0,
       selectedLeftArmIndex: 0,
       selectedTorsoIndex: 0,
@@ -49,6 +73,7 @@ export default {
       selectedBaseIndex: 0,
     };
   },
+  mixins: [createdHookMixin],
   computed: {
     selectedRobot() {
       return {
@@ -58,6 +83,9 @@ export default {
         rightArm: availableParts.arms[this.selectedRightArmIndex],
         base: availableParts.bases[this.selectedBaseIndex],
       };
+    },
+    saleBorderClass() {
+      return this.selectedRobot.head.onSale ? 'sale-border' : '';
     },
   },
   methods: {
@@ -131,11 +159,20 @@ export default {
         availableParts.bases.length,
       );
     },
+    addToCart() {
+      const robot = this.selectedRobot;
+      const cost = robot.head.cost +
+                   robot.leftArm.cost +
+                   robot.torso.cost +
+                   robot.rightArm.cost +
+                   robot.base.cost;
+      this.cart.push(Object.assign({}, robot, { cost }));
+    },
   },
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .part {
   position: relative;
   width: 165px;
@@ -224,5 +261,35 @@ export default {
 }
 .right .next-selector {
   right: -3px;
+}
+.robot-name {
+  position: absolute;
+  top: -25px;
+  text-align: center;
+  width: 100%;
+}
+.sale {
+  color: red;
+}
+.sale-border {
+  border: 3px solid red;
+}
+.content {
+  position: relative;
+}
+.add-to-cart {
+  position: absolute;
+  width: 220px;
+  right: 30px;
+  padding: 3px;
+  font-size: 16px;
+}
+td, th {
+  text-align: left;
+  padding: 5px;
+  padding-right: 20px;
+}
+.cost {
+  text-align: right;
 }
 </style>

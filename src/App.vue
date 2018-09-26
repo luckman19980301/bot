@@ -10,7 +10,9 @@
       </nav>
     </header>
     <main>
-      <RobotBuilder />
+      <div class="robot-name">
+        <RobotBuilder />
+      </div>
     </main>
   </div>
 </template>
@@ -19,20 +21,22 @@
 // import HomePage from './home/HomePage.vue';
 import RobotBuilder from './build/RobotBuilder.vue';
 
-
 export default {
   name: 'App',
   components: {
-    RobotBuilder
-  }
+    RobotBuilder,
+  },
 };
 </script>
 
-<style>
+<style lang="scss">
 body {
   background: linear-gradient(to bottom, #555, #999);
   background-attachment: fixed;
 }
+</style>
+
+<style lang="scss" scoped>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
