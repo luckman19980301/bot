@@ -11,7 +11,7 @@
     </header>
     <main>
       <div class="robot-name">
-        <RobotBuilder />
+        <robot-builder />
       </div>
     </main>
   </div>
@@ -24,7 +24,7 @@ import RobotBuilder from './build/RobotBuilder.vue';
 export default {
   name: 'App',
   components: {
-    RobotBuilder,
+    'robot-builder': RobotBuilder,
   },
 };
 </script>
