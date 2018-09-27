@@ -1,8 +1,12 @@
 <template>
   <div>
-    <div class="header">
-      <span v-if="open" @click="open = !open">&#x25B2; Collapse</span>
-      <span v-if="!open" @click="open = !open">&#x25BC; Expand</span>
+    <div class="collapsible-header">
+      <span v-if="open" class="collapsible-header__toggle" @click="open = !open">
+        &#x25B2; Collapse
+      </span>
+      <span v-if="!open" class="collapsible-header__toggle" @click="open = !open">
+        &#x25BC; Expand
+      </span>
     </div>
     <slot v-if="open"></slot>
   </div>
@@ -20,9 +24,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.header {
+.collapsible-header {
   background: #bbb;
   padding: 3px;
   cursor: pointer;
+  &__toggle {
+    display: block;
+  }
 }
 </style>
