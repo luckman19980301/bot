@@ -18,19 +18,19 @@ export default {
 </script>
 
 <style scoped>
-  h1 {
-    text-align: center;
-  }
-  .menu {
-    display: flex;
-    justify-content: space-around;
-    margin: 0 100px;
-    font-size: 20px;
-  }
-  ul {
-    list-style-type: none;
-  }
-  a {
-    color: palevioletred;
-  }
+h1 {
+  text-align: center;
+}
+.menu {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 100px;
+  font-size: 20px;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  color: palevioletred;
+}
 </style>

@@ -5,7 +5,8 @@
       params: {
         id: this.selectedPart.id,
         partType: this.selectedPart.type,
-      }}">
+      }}"
+    >
       <img :src="selectedPart.src">
     </router-link>
     <button @click="selectPreviousPart" class="prev-selector"></button>
