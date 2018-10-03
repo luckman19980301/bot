@@ -1,4 +1,4 @@
-# build-a-bot
+# build-a-bot  [![Build Status](https://travis-ci.org/kwood15/build-a-bot.svg?branch=master)](https://travis-ci.org/kwood15/build-a-bot)
 
 ### Project setup
 ```
