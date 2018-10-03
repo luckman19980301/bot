@@ -100,7 +100,7 @@ export default {
       return this.selectedRobot.head.onSale ? 'sale-border' : '';
     },
     availableParts() {
-      return this.$store.state.parts;
+      return this.$store.state.robots.parts;
     },
   },
   methods: {
