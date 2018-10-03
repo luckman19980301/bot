@@ -1,6 +1,6 @@
 # build-a-bot
 
-## Project setup
+### Project setup
 ```
 git clone https://github.com/kwood15/build-a-bot.git
 ```
@@ -28,7 +28,7 @@ npm run lint
 
 # build-a-bot-server
 
-## Project setup
+### Project setup
 ```
 git clone https://github.com/kwood15/build-a-bot-server.git
 ```
