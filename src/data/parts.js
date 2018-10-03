@@ -4,8 +4,7 @@ const parts = {
   heads: [
     {
       id: 1,
-      description:
-        'A robot head with an unusually large eye and teloscpic neck -- excellent for exploring high spaces.',
+      description: 'A robot head with an unusually large eye and teloscpic neck -- excellent for exploring high spaces.',
       title: 'Large Cyclops',
       src: images('./head-big-eye.png'),
       type: 'heads',
@@ -22,8 +21,7 @@ const parts = {
     },
     {
       id: 3,
-      description:
-        'A large three-eyed head with a shredder for a mouth -- great for crushing light medals or shredding documents.',
+      description: 'A large three-eyed head with a shredder for a mouth -- great for crushing light medals or shredding documents.',
       title: 'Shredder',
       src: images('./head-shredder.png'),
       type: 'heads',
@@ -31,8 +29,7 @@ const parts = {
     },
     {
       id: 4,
-      description:
-        'A simple single-eyed head -- simple and inexpensive.',
+      description: 'A simple single-eyed head -- simple and inexpensive.',
       title: 'Small Cyclops',
       src: images('./head-single-eye.png'),
       type: 'heads',
@@ -40,8 +37,7 @@ const parts = {
     },
     {
       id: 5,
-      description:
-        'A robot head with three oscillating eyes -- excellent for surveillance.',
+      description: 'A robot head with three oscillating eyes -- excellent for surveillance.',
       title: 'Surveillance Bot',
       src: images('./head-surveillance.png'),
       type: 'heads',
