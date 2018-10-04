@@ -6,7 +6,6 @@
 
     Root getter state: {{ rootGetterFoo }}<br>
     Robot getter state: {{ robotsGetterFoo }}<br>
-    Users getter state: {{ usersGetterFoo }}<br>
     <header>
       <nav>
         <ul>
@@ -44,27 +43,20 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex';
+
 export default {
   name: 'App',
   computed: {
-    rootFoo() {
-      return this.$store.state.foo;
-    },
-    robotsFoo() {
-      return this.$store.state.robots.foo;
-    },
-    usersFoo() {
-      return this.$store.state.users.foo;
-    },
-    rootGetterFoo() {
-      return this.$store.getters.foo;
-    },
-    robotsGetterFoo() {
-      return this.$store.getters['robots/foo'];
-    },
-    usersGetterFoo() {
-      return this.$store.getters['users/foo'];
-    },
+    ...mapState({
+      rootFoo: 'foo',
+      robotsFoo: state => state.robots.foo,
+      usersFoo: state => state.users.foo,
+    }),
+    ...mapGetters({
+      rootGetterFoo: 'foo',
+      robotsGetterFoo: 'robots/foo',
+    }),
     cart() {
       return this.$store.state.robots.cart;
     },
