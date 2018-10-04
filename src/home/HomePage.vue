@@ -15,6 +15,9 @@ export default {
   props: {
     msg: String,
   },
+  created() {
+    console.log(process.env.VUE_APP_MSG);
+  },
 };
 </script>
 
