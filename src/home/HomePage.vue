@@ -4,7 +4,8 @@
       <img class="robot" src="../assets/robot-home.png" aria-hidden="true">
     </div>
     <div class="get-started">
-      <router-link to="/build">Get Started!</router-link> Build your first robot!
+      <h1>{{ msg }}</h1>
+      <router-link :to="{ name: 'Build' }">Get Started!</router-link> Build your first robot!
     </div>
   </div>
 </template>
@@ -13,10 +14,13 @@
 export default {
   name: 'HomePage',
   props: {
-    msg: String,
+    msg: {
+      type: String,
+      default: 'Welcome!',
+    },
   },
   created() {
-    console.log(process.env.VUE_APP_MSG);
+    // console.log(process.env.VUE_APP_MSG);
   },
 };
 </script>
