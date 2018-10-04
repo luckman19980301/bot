@@ -9,6 +9,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     foo: 'root-foo',
+    showForTesting: false,
   },
   modules: {
     robots: robotsModule,

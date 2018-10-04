@@ -1,11 +1,13 @@
 <template>
   <div id="app">
-    Root state: {{ rootFoo }}<br>
-    Robot state: {{ robotsFoo }}<br>
-    Users state: {{ usersFoo }}<br>
+    <template v-if="showForTesting">
+      Root state: {{ rootFoo }}<br>
+      Robot state: {{ robotsFoo }}<br>
+      Users state: {{ usersFoo }}<br>
 
-    Root getter state: {{ rootGetterFoo }}<br>
-    Robot getter state: {{ robotsGetterFoo }}<br>
+      Root getter state: {{ rootGetterFoo }}<br>
+      Robot getter state: {{ robotsGetterFoo }}<br>
+    </template>
     <header>
       <nav>
         <ul>
@@ -50,6 +52,7 @@ export default {
   computed: {
     ...mapState({
       rootFoo: 'foo',
+      showForTesting: 'showForTesting',
       robotsFoo: state => state.robots.foo,
       usersFoo: state => state.users.foo,
     }),
