@@ -15,6 +15,6 @@ describe('HomePage.vue', () => {
       router,
       propsData: { msg },
     });
-    expect(wrapper.text().match(msg));
+    expect(wrapper.text()).toMatch(msg);
   });
 });
