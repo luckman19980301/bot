@@ -1,5 +1,6 @@
 <template>
   <div class="part" :class="position">
+    <div v-show="selectedPart.onSale">{{ pinPadding }}</div>
     <router-link :to="{
       name: 'Parts',
       params: {
@@ -11,7 +12,14 @@
     </router-link>
     <button @click="selectPreviousPart" class="prev-selector"></button>
     <button @click="selectNextPart" class="next-selector"></button>
-    <span v-pin:position.top.right class="sale" v-show="selectedPart.onSale">Sale!</span>
+    <span
+      @click="pinPadding = '30px'"
+      v-pin="{ top: pinPadding, right: pinPadding }"
+      class="sale"
+      v-show="selectedPart.onSale"
+    >
+      Sale!
+    </span>
   </div>
 </template>
 
@@ -46,6 +54,7 @@ export default {
   data() {
     return {
       selectedPartIndex: 0,
+      pinPadding: '10px',
     };
   },
   computed: {
