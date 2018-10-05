@@ -1,4 +1,4 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils';
+import { shallowMount, createLocalVue, RouterLinkStub } from '@vue/test-utils';
 import VueRouter from 'vue-router';
 import HomePage from '../HomePage.vue';
 
@@ -20,5 +20,14 @@ describe('HomePage.vue', () => {
       localVue,
     });
     expect(wrapper.find('h1').text()).toBe('Welcome!');
+  });
+
+  it('returns the correct route path with props.to', () => {
+    const wrapper = shallowMount(HomePage, {
+      stubs: {
+        RouterLink: RouterLinkStub,
+      },
+    });
+    expect(wrapper.find(RouterLinkStub).props().to).toEqual({ name: 'Build' });
   });
 });
