@@ -7,7 +7,7 @@ const localVue = createLocalVue();
 localVue.use(VueRouter);
 localVue.directive('pin', pinDirective);
 
-describe('PartsSelector.vue', () => {
+describe('PartsSelector', () => {
   const requiredProps = {
     position: 'top',
     parts: ['heads', 'arms'],

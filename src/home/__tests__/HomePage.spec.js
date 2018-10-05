@@ -5,7 +5,7 @@ import HomePage from '../HomePage.vue';
 const localVue = createLocalVue();
 localVue.use(VueRouter);
 
-describe('HomePage.vue', () => {
+describe('HomePage', () => {
   it('renders props.msg when passed', () => {
     const msg = 'New message';
     const wrapper = shallowMount(HomePage, {
