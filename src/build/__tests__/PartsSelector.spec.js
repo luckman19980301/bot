@@ -13,16 +13,6 @@ describe('PartsSelector.vue', () => {
     parts: ['heads', 'arms'],
   };
 
-  it('renders props.msg when passed', () => {
-    const wrapper = shallowMount(PartsSelector, {
-      localVue,
-      propsData: {
-        ...requiredProps,
-      },
-    });
-    expect(wrapper.contains('button')).toBe(true);
-  });
-
   it('returns the correct route path with props.to', () => {
     const wrapper = mount(PartsSelector, {
       localVue,
@@ -40,5 +30,42 @@ describe('PartsSelector.vue', () => {
         partType: undefined,
       },
     });
+  });
+
+  it('renders two buttons', () => {
+    const wrapper = shallowMount(PartsSelector, {
+      localVue,
+      propsData: {
+        ...requiredProps,
+      },
+    });
+    const btns = wrapper.findAll('button');
+    expect(btns.length).toEqual(2);
+  });
+
+  it('renders the `previous` button', () => {
+    const wrapper = shallowMount(PartsSelector, {
+      localVue,
+      propsData: {
+        ...requiredProps,
+      },
+    });
+    const btns = wrapper.findAll('button');
+    const prevBtn = btns.at(0);
+    expect(prevBtn.attributes('id')).toBe('prevBtn');
+    expect(prevBtn.classes('prev-selector')).toBe(true);
+  });
+
+  it('renders the `next` button', () => {
+    const wrapper = shallowMount(PartsSelector, {
+      localVue,
+      propsData: {
+        ...requiredProps,
+      },
+    });
+    const btns = wrapper.findAll('button');
+    const nextBtn = btns.at(1);
+    expect(nextBtn.attributes('id')).toBe('nextBtn');
+    expect(nextBtn.classes('next-selector')).toBe(true);
   });
 });

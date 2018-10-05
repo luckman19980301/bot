@@ -10,8 +10,8 @@
     >
       <img :src="selectedPart.src">
     </router-link>
-    <button @click="selectPreviousPart" class="prev-selector"></button>
-    <button @click="selectNextPart" class="next-selector"></button>
+    <button id="prevBtn" @click="selectPreviousPart" class="prev-selector"></button>
+    <button id="nextBtn" @click="selectNextPart" class="next-selector"></button>
     <span
       @click="pinPadding = '30px'"
       v-pin="{ top: pinPadding, right: pinPadding }"
