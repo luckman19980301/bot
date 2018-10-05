@@ -5,16 +5,20 @@ import HomePage from '../HomePage.vue';
 const localVue = createLocalVue();
 localVue.use(VueRouter);
 
-const router = new VueRouter();
-
 describe('HomePage.vue', () => {
-  it('renders a prop message when passed', () => {
-    const msg = 'test message';
+  it('renders props.msg when passed', () => {
+    const msg = 'New message';
     const wrapper = shallowMount(HomePage, {
       localVue,
-      router,
       propsData: { msg },
     });
-    expect(wrapper.text()).toMatch(msg);
+    expect(wrapper.find('h1').text()).toBe(msg);
+  });
+
+  it('renders a default value for props.msg', () => {
+    const wrapper = shallowMount(HomePage, {
+      localVue,
+    });
+    expect(wrapper.find('h1').text()).toBe('Welcome!');
   });
 });
