@@ -2,7 +2,7 @@
 
 ### Project setup
 ```
-git clone https://github.com/kwood15/build-a-bot.git
+git clone https://github.com/luckman19980301/bot.git
 ```
 
 ### Install dependencies
@@ -30,7 +30,7 @@ npm run lint
 
 ### Project setup
 ```
-git clone https://github.com/kwood15/build-a-bot-server.git
+git clone https://github.com/luckman19980301/bot.git
 ```
 
 ### Install dependencies
